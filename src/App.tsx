@@ -1,30 +1,43 @@
+// In your App.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import VirtualGame from './fps';
 
-export function mount(container: HTMLElement, initialProps?: any) {
+interface MountAPI {
+  updateProps: (props: any) => void;
+  unmount: () => void;
+  getProps: () => any;
+}
+
+export function mount(container: HTMLElement, initialProps?: any): MountAPI {
   const root = ReactDOM.createRoot(container);
+  let currentProps = initialProps || {};
   
-  // Wrapper component to handle prop updates
-  const MountWrapper = ({ children, ...props }: any) => {
+  const App = () => {
+    const [props, setProps] = React.useState(currentProps);
+    
+    // Expose setProps to the API
+    React.useEffect(() => {
+      (window as any).__updateProps = setProps;
+    }, []);
+    
     return <VirtualGame {...props} />;
   };
   
-  let currentProps = initialProps || {};
-  
-  const render = (props: any = {}) => {
-    currentProps = { ...currentProps, ...props };
-    root.render(<MountWrapper {...currentProps} />);
-  };
-  
-  // Initial render
-  render(initialProps);
+  root.render(<App />);
   
   return {
-    // Method to update props
-    updateProps: (newProps: any) => render(newProps),
-    // Method to unmount
-    unmount: () => root.unmount()
+    updateProps: (newProps: any) => {
+      currentProps = { ...currentProps, ...newProps };
+      if ((window as any).__updateProps) {
+        (window as any).__updateProps(currentProps);
+      }
+    },
+    unmount: () => {
+      delete (window as any).__updateProps;
+      root.unmount();
+    },
+    getProps: () => currentProps
   };
 }
 
