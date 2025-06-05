@@ -4,7 +4,7 @@ const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
   mode: 'production', // Use production mode for better optimization
-  entry: './index.tsx',
+  entry: './src/index.tsx',
   devtool: 'source-map',
   devServer: {
     port: 3001,
@@ -35,7 +35,7 @@ module.exports = {
       name: 'threescene',
       filename: 'remoteEntry.js',
       exposes: {
-        './Block': './App',
+        './Block': './src/App',
       },
       // CRITICAL: Use empty object to prevent ANY dependency sharing
       shared: {},
