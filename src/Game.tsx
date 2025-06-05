@@ -16,7 +16,7 @@ interface ColliderType {
 }
 
 export default function Physics() {
-  const { nodes, scene }: any = useGLTF('/models/scene-transformed.glb')
+  const { nodes, scene }: any = useGLTF('https://content.mext.app/courses/68413038bd1af4c76c20a154/model/scene-transformed.glb')
   const octree = useOctree(scene)
   useOctreeHelper(octree)
 
