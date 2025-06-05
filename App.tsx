@@ -1,6 +1,10 @@
-import React from 'react'
-import FpsGame from './fps'
+import React from 'react';
+import VirtualGame from './threescene/src';
 
-export default function App() {
-  return <FpsGame />
-} 
+function App() {
+  return (
+    <VirtualGame />
+  );
+}
+
+export default App;
