@@ -15,17 +15,13 @@
     "noEmit": false,
     "jsx": "react-jsx",
     "declaration": false,
-    "outDir": "./dist",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "outDir": "./dist"
   },
   "include": [
-    "src/**/*"
+    "**/*"
   ],
   "exclude": [
     "node_modules",
     "dist"
   ]
-} 
+}
