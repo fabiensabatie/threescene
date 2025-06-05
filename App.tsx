@@ -1,5 +1,5 @@
 import React from 'react';
-import VirtualGame from './threescene/src';
+import VirtualGame from './src';
 
 function App() {
   return (
