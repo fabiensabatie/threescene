@@ -1,5 +1,5 @@
 import React from 'react';
-import VirtualGame from './src';
+import VirtualGame from './src/fps';
 
 function App() {
   return (
