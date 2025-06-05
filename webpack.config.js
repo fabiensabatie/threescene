@@ -37,7 +37,7 @@ module.exports = {
       exposes: {
         './Block': './App',
       },
-      // Independent dependencies - no sharing
+      shared: false
     }),
   ],
   output: {
