@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
-  mode: 'production', // Use production mode for better optimization
+  mode: 'production',
   entry: './src/index.tsx',
   devtool: 'source-map',
   devServer: {
@@ -37,28 +37,23 @@ module.exports = {
       exposes: {
         './Block': './src/App',
       },
-      // CRITICAL: Use empty object to prevent ANY dependency sharing
+      // CRITICAL: Empty object = no shared dependencies, full isolation
       shared: {},
     }),
   ],
-  // CRITICAL: Use externals to prevent webpack from trying to externalize common libraries
   externals: {},
   optimization: {
-    // Disable splitChunks to keep everything bundled together
     splitChunks: false,
-    // Ensure all modules are bundled in the main chunk
     concatenateModules: true,
   },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    // CRITICAL: Use 'var' library type to avoid module system conflicts
     library: {
       type: 'var',
       name: 'threescene'
     },
-    // Ensure the federation module is completely self-contained
     publicPath: 'auto',
   },
 };
