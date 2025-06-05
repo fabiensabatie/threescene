@@ -33,7 +33,7 @@ export default function FpsGame() {
           shadow-camera-top={30}
           shadow-camera-bottom={-30}
         />
-        <Environment files="/img/rustig_koppie_puresky_1k.hdr" background />
+        <Environment files="https://content.mext.app/courses/68413038bd1af4c76c20a154/model/rustig_koppie_puresky_1k.hdr" background />
         <Game />
         <PointerLockControls />
         <Stats />
