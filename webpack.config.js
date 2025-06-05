@@ -37,8 +37,8 @@ module.exports = {
       exposes: {
         './Block': './App',
       },
-      // Completely disable sharing - bundle everything internally
-      shared: false,
+      // CRITICAL: Use empty object to prevent ANY dependency sharing
+      shared: {},
     }),
   ],
   // CRITICAL: Use externals to prevent webpack from trying to externalize common libraries
