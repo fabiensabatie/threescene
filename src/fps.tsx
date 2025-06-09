@@ -2,7 +2,6 @@ import React from 'react'
 import { Environment, PointerLockControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import Game from './Game'
-import Overlay from './Overlay'
 
 export default function FpsGame() {
   const rootStyle: React.CSSProperties = {
@@ -36,7 +35,6 @@ export default function FpsGame() {
         <Game />
         <PointerLockControls />
       </Canvas>
-      <Overlay />
     </div>
   )
 } 
