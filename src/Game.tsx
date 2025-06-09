@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import useOctree from './useOctree'
 import Player from './Player'
-import useOctreeHelper from './useOctreeHelper'
 import SphereCollider from './SphereCollider'
 import Ball from './Ball'
 import * as Constants from './Constants'
@@ -18,7 +17,7 @@ interface ColliderType {
 export default function Physics() {
   const { nodes, scene }: any = useGLTF('https://content.mext.app/courses/68413038bd1af4c76c20a154/model/scene-transformed.glb')
   const octree = useOctree(scene)
-  useOctreeHelper(octree)
+
 
   const colliders = useRef<ColliderType[]>([])
 
