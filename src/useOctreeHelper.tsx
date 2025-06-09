@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { OctreeHelper } from 'three/examples/jsm/helpers/OctreeHelper'
 import { useThree } from '@react-three/fiber'
-import { useControls } from 'leva'
 import { Octree } from 'three/examples/jsm/math/Octree'
 
 export default function useOctreeHelper(octree: Octree): void {
@@ -18,16 +17,5 @@ export default function useOctreeHelper(octree: Octree): void {
     }
   }, [octree, scene])
 
-  useControls('Octree Helper', {
-    visible: {
-      value: false,
-      onChange: (v: boolean) => {
-        const octreeHelper = scene.getObjectByName('octreeHelper')
-        if (octreeHelper) {
-          octreeHelper.visible = v
-        }
-        //if (document.getElementById('Octree Helper.visible')) document.getElementById('Octree Helper.visible').blur()
-      }
-    }
-  })
+  
 } 
