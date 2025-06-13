@@ -4,6 +4,13 @@ import { Canvas } from '@react-three/fiber'
 import Game from './Game'
 
 export default function FpsGame() {
+
+  useEffect(() => {
+    // Send completion event immediately as this is an explorable experience
+    const blockId = '684b6b8d70b4874100718779';
+    window.postMessage({ type: 'BLOCK_COMPLETION', blockId, completed: true }, '*');
+    window.parent.postMessage({ type: 'BLOCK_COMPLETION', blockId, completed: true }, '*');
+  }, []);
   const rootStyle: React.CSSProperties = {
     height: '100%',
     margin: 0,
