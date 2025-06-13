@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Environment, PointerLockControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import Game from './Game'
